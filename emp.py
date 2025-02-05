@@ -28,16 +28,21 @@ def calculate_daily_wage():
 
     return total_hours, total_wages
 
-def calculate_monthly_wage(days=30):
-    monthly_hours = 0
-    monthly_wages = 0
-    for _ in range(days):
+def calculate_wages_until_limit(max_hours=100, max_days=20):
+    total_hours = 0
+    total_wages = 0
+    days_worked = 0
+
+    while total_hours < max_hours and days_worked < max_days:
         daily_hours, daily_wage = calculate_daily_wage()
-        monthly_hours += daily_hours
-        monthly_wages += daily_wage
-    print(monthly_hours)
-    print(monthly_wages)
+        total_hours += daily_hours
+        total_wages += daily_wage
+        days_worked += 1
+
+    print(total_hours)
+    print(total_wages)
+    print(days_worked)
 
 # Example usage
 if __name__ == "__main__":
-    calculate_monthly_wage()
+    calculate_wages_until_limit()
