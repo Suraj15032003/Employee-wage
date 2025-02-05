@@ -12,15 +12,16 @@ def calculate_wages():
     total_wages = 0
 
     if emp_attendance() == 1:
-        if worktype == 1:
-            total_hours = part_time_hours
-            total_wages = part_time_hours * wages_per_hour
-        elif worktype == 2:
-            total_hours = full_time_hours
-            total_wages = full_time_hours * wages_per_hour
-        else:
-            total_hours = 0
-            total_wages = 0
+        match worktype:
+            case 1:
+                total_hours = part_time_hours
+                total_wages = part_time_hours * wages_per_hour
+            case 2:
+                total_hours = full_time_hours
+                total_wages = full_time_hours * wages_per_hour
+            case _:
+                total_hours = 0
+                total_wages = 0
     else:
         total_hours = 0
         total_wages = 0
